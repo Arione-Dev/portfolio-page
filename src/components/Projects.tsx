@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ExternalLink, Github, Layers, CheckCircle2 } from 'lucide-react';
 import { Project } from '../types';
+import { Reveal } from './Reveal';
 
 export const Projects: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'fullstack' | 'frontend' | 'backend'>('all');
@@ -105,7 +106,7 @@ export const Projects: React.FC = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+      <Reveal stagger className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
         {filteredProjects.map((project) => (
           <div
             key={project.id}
@@ -199,7 +200,7 @@ export const Projects: React.FC = () => {
             </div>
           </div>
         ))}
-      </div>
+      </Reveal>
     </section>
   );
 };
