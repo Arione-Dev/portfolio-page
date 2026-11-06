@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Send, Mail, MessageCircle, Linkedin, Github, Check, Copy } from 'lucide-react';
+import { Send, Mail, MessageCircle, Linkedin, Github, Check, Copy, Loader2, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { profile, whatsappUrl } from '../data/profile';
 
 export const Contact: React.FC = () => {
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,23 +23,58 @@ export const Contact: React.FC = () => {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Fire Confetti
-    confetti({
-      particleCount: 80,
-      spread: 70,
-      origin: { y: 0.6 },
-      colors: ['#06b6d4', '#3b82f6', '#8b5cf6', '#10b981']
-    });
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${emailAddress}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          Nome: formData.name,
+          Email: formData.email,
+          Assunto: formData.subject,
+          Mensagem: formData.message,
+          _subject: `[Portfólio] ${formData.subject} — de ${formData.name}`,
+          _replyto: formData.email,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
 
-    // Reset after a while
-    setTimeout(() => {
-      setFormSubmitted(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-    }, 4000);
+      const result = await response.json();
+
+      if (!response.ok || result.success === 'false' || result.success === false) {
+        throw new Error(result.message || 'Não foi possível enviar a mensagem agora.');
+      }
+
+      setFormSubmitted(true);
+
+      // Fire Confetti
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#06b6d4', '#3b82f6', '#8b5cf6', '#10b981']
+      });
+
+      // Reset after a while
+      setTimeout(() => {
+        setFormSubmitted(false);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+      }, 6000);
+    } catch {
+      setSubmitError(
+        'Não foi possível enviar automaticamente. Verifique sua conexão ou clique em seu e-mail ao lado.'
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -153,17 +190,17 @@ export const Contact: React.FC = () => {
           <div className="glass-panel-glow p-8 sm:p-10 rounded-3xl border border-slate-700/60">
             <h3 className="text-xl font-bold text-white mb-2">Enviar Mensagem</h3>
             <p className="text-slate-400 text-xs sm:text-sm mb-6">
-              Preencha os campos abaixo e responderei o mais breve possível.
+              Preencha os campos abaixo e a mensagem será enviada diretamente para o meu e-mail.
             </p>
 
             {formSubmitted ? (
-              <div className="py-12 flex flex-col items-center justify-center text-center space-y-3 bg-slate-900/60 rounded-2xl border border-emerald-500/30">
+              <div className="py-12 px-6 flex flex-col items-center justify-center text-center space-y-3 bg-slate-900/60 rounded-2xl border border-emerald-500/30">
                 <div className="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center border border-emerald-500/40">
                   <Check className="w-6 h-6" />
                 </div>
                 <h4 className="text-lg font-bold text-white">Mensagem Enviada com Sucesso!</h4>
-                <p className="text-xs text-slate-400 max-w-xs">
-                  Obrigado pelo contato, Arione responderá o mais breve possível.
+                <p className="text-xs text-slate-300 max-w-md leading-relaxed">
+                  Obrigado pelo contato! Sua mensagem foi encaminhada para <strong className="text-cyan-300">{emailAddress}</strong> e responderei o mais breve possível.
                 </p>
               </div>
             ) : (
@@ -173,11 +210,13 @@ export const Contact: React.FC = () => {
                     <label className="text-xs font-medium text-slate-300">Seu Nome</label>
                     <input
                       type="text"
+                      name="name"
                       required
+                      disabled={isSubmitting}
                       placeholder="Como posso te chamar?"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition"
+                      className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition disabled:opacity-60"
                     />
                   </div>
 
@@ -185,11 +224,13 @@ export const Contact: React.FC = () => {
                     <label className="text-xs font-medium text-slate-300">Seu E-mail</label>
                     <input
                       type="email"
+                      name="email"
                       required
+                      disabled={isSubmitting}
                       placeholder="seu.email@empresa.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition"
+                      className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition disabled:opacity-60"
                     />
                   </div>
                 </div>
@@ -198,11 +239,13 @@ export const Contact: React.FC = () => {
                   <label className="text-xs font-medium text-slate-300">Assunto</label>
                   <input
                     type="text"
+                    name="subject"
                     required
+                    disabled={isSubmitting}
                     placeholder="Proposta de projeto, vaga, consultoria..."
                     value={formData.subject}
                     onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition"
+                    className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition disabled:opacity-60"
                   />
                 </div>
 
@@ -210,20 +253,39 @@ export const Contact: React.FC = () => {
                   <label className="text-xs font-medium text-slate-300">Mensagem</label>
                   <textarea
                     rows={4}
+                    name="message"
                     required
+                    disabled={isSubmitting}
                     placeholder="Conte um pouco sobre a sua ideia ou necessidade..."
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition resize-none"
+                    className="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 transition resize-none disabled:opacity-60"
                   />
                 </div>
 
+                {submitError && (
+                  <div className="p-3 rounded-xl bg-rose-500/10 border border-rose-500/30 flex items-center gap-2 text-xs text-rose-300">
+                    <AlertCircle className="w-4 h-4 shrink-0 text-rose-400" />
+                    <span>{submitError}</span>
+                  </div>
+                )}
+
                 <button
                   type="submit"
-                  className="w-full py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 text-white shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/35 hover:scale-[1.01] transition-all flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full py-3.5 rounded-xl font-semibold text-sm bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 text-white shadow-xl shadow-cyan-500/25 hover:shadow-cyan-500/35 hover:scale-[1.01] transition-all flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  <span>Enviar Mensagem</span>
-                  <Send className="w-4 h-4" />
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                      <span>Enviando mensagem...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Enviar Mensagem</span>
+                      <Send className="w-4 h-4" />
+                    </>
+                  )}
                 </button>
               </form>
             )}
@@ -234,4 +296,3 @@ export const Contact: React.FC = () => {
     </section>
   );
 };
-
