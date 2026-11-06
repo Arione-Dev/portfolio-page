@@ -34,8 +34,10 @@ Os merges de branches de funcionalidade usam `--no-ff` para preservar o históri
 
 ## Padrão de commits (Conventional Commits)
 
+Mantemos o **prefixo/tipo em inglês** (`feat`, `fix`, `docs`, etc.) e a **descrição em português**:
+
 ```
-<tipo>(<escopo opcional>): <descrição no imperativo>
+<tipo>(<escopo opcional>): <descrição em português no presente/imperativo>
 ```
 
 | Tipo | Uso |
@@ -51,10 +53,11 @@ Os merges de branches de funcionalidade usam `--no-ff` para preservar o históri
 Exemplos:
 
 ```
-feat(intro): add machine-language rain intro
-fix(contact): copy email to clipboard
-docs: add README and contributing guide
-chore: configure vite, typescript and tailwind
+feat(intro): adiciona efeito de raio-x com binário e código nas laterais
+feat(animacao): adiciona revelação dos blocos ao rolar a página
+fix(contato): corrige cópia de e-mail para a área de transferência
+docs: atualiza guia de contribuição e README
+chore: configura vite, typescript e tailwind
 ```
 
 ## Antes de abrir um Pull Request

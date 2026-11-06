@@ -7,6 +7,8 @@ import { Projects } from './components/Projects';
 import { AboutAndExperience } from './components/AboutAndExperience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
+import { Reveal } from './components/Reveal';
+import { CodeRevealBackground } from './components/CodeRevealBackground';
 import { Zap, Code2, ShieldCheck, Rocket } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -52,6 +54,9 @@ export const App: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-20" />
       </div>
 
+      {/* 3b. Code "x-ray" lens: binary then source code revealed behind the site on mouse move */}
+      <CodeRevealBackground />
+
       {/* 4. Main Portfolio Content (Always rendered behind, revealed as laser scans down) */}
       <div className="relative z-10 opacity-100">
         <Navbar onReplayIntro={handleReplayIntro} />
@@ -61,7 +66,7 @@ export const App: React.FC = () => {
 
           {/* Quick Metrics Bar */}
           <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <Reveal stagger className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="glass-panel p-5 rounded-2xl border border-slate-800 text-center flex flex-col items-center justify-center group hover:border-cyan-500/30 transition">
                 <div className="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-2">
                   <Code2 className="w-4 h-4" />
@@ -109,16 +114,16 @@ export const App: React.FC = () => {
                   CI/CD & Resolução
                 </p>
               </div>
-            </div>
+            </Reveal>
           </section>
 
-          <Skills />
-          <Projects />
-          <AboutAndExperience />
-          <Contact />
+          <Reveal><Skills /></Reveal>
+          <Reveal><Projects /></Reveal>
+          <Reveal><AboutAndExperience /></Reveal>
+          <Reveal><Contact /></Reveal>
         </main>
 
-        <Footer />
+        <Reveal><Footer /></Reveal>
       </div>
 
     </div>
