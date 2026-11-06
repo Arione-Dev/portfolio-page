@@ -2,69 +2,74 @@ import React, { useState } from 'react';
 import { ExternalLink, Github, Layers, CheckCircle2 } from 'lucide-react';
 import { Project } from '../types';
 import { Reveal } from './Reveal';
+import { profile } from '../data/profile';
 
 export const Projects: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'fullstack' | 'frontend' | 'backend'>('all');
 
   const projects: Project[] = [
     {
-      id: 'omniflow',
-      title: 'OmniFlow - Plataforma SaaS de Gestão',
-      description: 'Sistema completo multi-inquilino (multi-tenant) com autenticação segura, dashboard financeiro em tempo real e processamento de pagamentos.',
+      id: 'interfort-ecosystem',
+      title: 'Ecossistema Corporativo & Agentes de IA (Interfort)',
+      description:
+        'Plataforma integrada para automação de SAC, ouvidoria, financeiro, logística e operacional. Engloba aplicações Web, PWA e apps móveis (Flutter Android/iOS) com backend em Python e IA Generativa.',
       category: 'fullstack',
-      tags: ['Next.js', 'React', 'Node.js', 'PostgreSQL', 'Prisma', 'Tailwind'],
-      demoUrl: 'https://github.com',
-      githubUrl: 'https://github.com',
+      tags: ['Python', 'FastAPI', 'Django', 'Flutter', 'PostgreSQL', 'Docker Swarm', 'LangChain'],
+      demoUrl: profile.github,
+      githubUrl: profile.github,
       featured: true,
       highlights: [
-        'Autenticação JWT com Refresh Tokens e RBAC',
-        'Modelagem de banco relacional de alto desempenho',
-        'Dashboard com gráficos interativos e exportação de relatórios'
+        'Redução comprovada de 62,5% nos custos operacionais',
+        'Agentes autônomos e IA Generativa (RAG) integrados ao atendimento',
+        'Orquestração em contêineres Docker Swarm com alta disponibilidade'
       ]
     },
     {
-      id: 'devcommerce',
-      title: 'DevCommerce - API RESTful Escalável',
-      description: 'Arquitetura de microsserviços para e-commerce com cálculo de frete inteligente, catálogo de produtos, carrinho de compras e controle de concorrência.',
+      id: 'diniz-logistics-platform',
+      title: 'Plataforma de Gestão Logística, RH & Dados em Tempo Real',
+      description:
+        'Sistema corporativo desenvolvido para reestruturação operacional e abastecimento estratégico de 10 filiais, com agendamento e monitoramento de entregas em tempo real.',
+      category: 'fullstack',
+      tags: ['Python', 'Flask', 'JavaScript', 'SQL', 'HTML5/CSS3', 'Análise de Dados'],
+      demoUrl: profile.github,
+      githubUrl: profile.github,
+      featured: true,
+      highlights: [
+        'Redução da ruptura de estoque das 10 filiais de 30% para 5%',
+        'Otimização completa do fluxo de separação e conferência de pedidos',
+        'Painéis de indicadores operacionais para suporte à tomada de decisão'
+      ]
+    },
+    {
+      id: 'rag-llm-orchestrator',
+      title: 'Orquestrador de IA Generativa, RAG & Mensageria',
+      description:
+        'Arquitetura de backend para processamento de documentos, busca semântica em bancos vetoriais e execução assíncrona de tarefas pesadas com filas distribuídas.',
       category: 'backend',
-      tags: ['Node.js', 'Express', 'TypeScript', 'Docker', 'Redis', 'PostgreSQL'],
-      demoUrl: 'https://github.com',
-      githubUrl: 'https://github.com',
-      featured: true,
-      highlights: [
-        'Clean Architecture com separação rigorosa de camadas',
-        'Cache distribuído com Redis para consultas frequentes',
-        'Documentação interativa com Swagger/OpenAPI'
-      ]
-    },
-    {
-      id: 'tasksync',
-      title: 'TaskSync - Colaboração em Tempo Real',
-      description: 'Aplicação estilo Kanban com sincronização instantânea de tarefas, comentários e quadro interativo utilizando WebSockets.',
-      category: 'fullstack',
-      tags: ['React', 'TypeScript', 'Tailwind', 'Socket.io', 'Node.js', 'MongoDB'],
-      demoUrl: 'https://github.com',
-      githubUrl: 'https://github.com',
+      tags: ['Python', 'FastAPI', 'LangChain', 'ChromaDB', 'Pinecone', 'Celery', 'RabbitMQ', 'Redis'],
+      demoUrl: profile.github,
+      githubUrl: profile.github,
       featured: false,
       highlights: [
-        'Sincronização bidirecional em tempo real via WebSockets',
-        'Arrastar e soltar (Drag and Drop) fluido',
-        'Armazenamento NoSQL otimizado para histórico de atividades'
+        'Pipeline RAG com Hugging Face, Ollama e otimização de modelos via ONNX',
+        'Processamento assíncrono resiliente com Celery, RabbitMQ e cache Redis',
+        'APIs RESTful documentadas e esteiras CI/CD com GitHub Actions'
       ]
     },
     {
-      id: 'nexus-analytics',
-      title: 'Nexus Analytics - Dashboard de Alta Performance',
-      description: 'Interface analítica focada em métricas de negócios, com filtros avançados, suporte a Dark/Light mode e renderização otimizada.',
+      id: 'enterprise-microservices',
+      title: 'Arquitetura Distribuída & Portal Web/PWA Moderno',
+      description:
+        'Solução full stack combinando microsserviços em Java (Spring Boot) e Node.js com interfaces reativas em React, Angular e TypeScript.',
       category: 'frontend',
-      tags: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Recharts'],
-      demoUrl: 'https://github.com',
-      githubUrl: 'https://github.com',
+      tags: ['React', 'Angular', 'TypeScript', 'Java (Spring Boot)', 'Node.js', 'Kubernetes', 'N8n'],
+      demoUrl: profile.github,
+      githubUrl: profile.github,
       featured: false,
       highlights: [
-        'Carregamento dinâmico e SSR para pontuação 100 no Lighthouse',
-        'Componentes reutilizáveis e tipados de ponta a ponta',
-        'Filtros multidimensionais com atualização reativa'
+        'Interfaces Web e PWA responsivas com foco em UX e performance',
+        'Integração com automações de fluxo via N8n e mensageria RabbitMQ',
+        'Deploy escalável com Docker Compose e Kubernetes (K8s)'
       ]
     }
   ];
@@ -79,11 +84,11 @@ export const Projects: React.FC = () => {
         <div className="space-y-3 text-left">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
             <Layers className="w-3.5 h-3.5" />
-            <span>Portfólio Prático</span>
+            <span>Portfólio & Cases Reais</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Projetos em Destaque</h2>
           <p className="text-slate-400 text-sm sm:text-base max-w-xl">
-            Soluções completas onde aplico padrões de arquitetura modernos, boas práticas e atenção aos mínimos detalhes.
+            Soluções em produção que unem engenharia de software sólida, bancos de dados, microsserviços e Inteligência Artificial.
           </p>
         </div>
 
@@ -113,7 +118,7 @@ export const Projects: React.FC = () => {
             className="glass-panel rounded-3xl overflow-hidden border border-slate-800 hover:border-cyan-500/40 hover:shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 flex flex-col group"
           >
             {/* Visual Header / Mockup Banner */}
-            <div className="h-48 bg-gradient-to-tr from-slate-950 via-[#0a1122] to-slate-950 relative overflow-hidden flex items-center justify-center p-6 border-b border-slate-800/80">
+            <div className="h-44 bg-gradient-to-tr from-slate-950 via-[#0a1122] to-slate-950 relative overflow-hidden flex items-center justify-center p-6 border-b border-slate-800/80">
               <div className="w-full h-full rounded-2xl bg-slate-900/80 border border-slate-700/60 p-4 shadow-2xl flex flex-col justify-between group-hover:scale-[1.03] transition-transform duration-300">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-1.5">
@@ -132,8 +137,8 @@ export const Projects: React.FC = () => {
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] font-mono text-slate-500">
-                  <span>status: live</span>
-                  <span>ready</span>
+                  <span>status: production</span>
+                  <span>verified</span>
                 </div>
               </div>
             </div>
@@ -180,7 +185,7 @@ export const Projects: React.FC = () => {
                     className="text-cyan-400 hover:text-cyan-300 flex items-center gap-1.5 transition-colors"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    <span>Live Demo</span>
+                    <span>Detalhes</span>
                   </a>
 
                   <span className="text-slate-700">•</span>
@@ -192,7 +197,7 @@ export const Projects: React.FC = () => {
                     className="text-slate-400 hover:text-white flex items-center gap-1.5 transition-colors"
                   >
                     <Github className="w-4 h-4" />
-                    <span>Ver Código</span>
+                    <span>GitHub</span>
                   </a>
                 </div>
               </div>
@@ -204,4 +209,3 @@ export const Projects: React.FC = () => {
     </section>
   );
 };
-

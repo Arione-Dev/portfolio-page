@@ -17,12 +17,17 @@ const codeLines = [
   { text: '>> COMPILANDO BINÁRIO EM INTERFACE VISUAL...', color: 'text-yellow-400' },
 ];
 
-const FADE_MS = 1600;
+const FADE_MS = 1400;
 
 export const HologramIntro: React.FC<HologramIntroProps> = ({ onComplete }) => {
   const [phase, setPhase] = useState<'run' | 'fade'>('run');
   const [progress, setProgress] = useState(0);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const onCompleteRef = useRef(onComplete);
+
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
   // Start at the top (no leftover #hash) and lock scroll during the intro
   useEffect(() => {
@@ -88,39 +93,47 @@ export const HologramIntro: React.FC<HologramIntroProps> = ({ onComplete }) => {
     };
   }, []);
 
-  // Single run: the bottom progress bar fills 0 -> 100% while the code lines appear in the box
+  // Step 1: Progress bar fills 0 -> 100%
   useEffect(() => {
     if (phase !== 'run') return;
     const timer = setInterval(() => {
       setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(timer);
-          setTimeout(() => setPhase('fade'), 400);
-          return 100;
-        }
+        if (prev >= 100) return 100;
         return Math.min(prev + Math.floor(Math.random() * 3) + 1, 100);
       });
     }, 45);
     return () => clearInterval(timer);
   }, [phase]);
 
-  // Everything dissolves smoothly into the real page
+  // Step 2: When progress hits 100%, switch to 'fade' phase
+  useEffect(() => {
+    if (phase !== 'run' || progress < 100) return;
+    const timer = setTimeout(() => {
+      setPhase('fade');
+    }, 350);
+    return () => clearTimeout(timer);
+  }, [progress, phase]);
+
+  // Step 3: Everything dissolves smoothly into the real page and unmounts
   useEffect(() => {
     if (phase !== 'fade') return;
-    const timer = setTimeout(onComplete, FADE_MS);
+    const timer = setTimeout(() => {
+      onCompleteRef.current();
+    }, FADE_MS);
     return () => clearTimeout(timer);
-  }, [phase, onComplete]);
+  }, [phase]);
 
   const fading = phase === 'fade';
-  // Code lines revealed in sync with the progress bar
   const visibleLines = Math.max(1, Math.ceil((progress / 100) * codeLines.length));
 
   return (
     <div className="fixed inset-0 z-50 pointer-events-none select-none overflow-hidden font-mono">
-      {/* Skip */}
+      {/* Skip button: also fades out and disables pointer events as soon as fade starts */}
       <button
-        onClick={onComplete}
-        className="pointer-events-auto absolute top-5 right-5 z-[60] flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-cyan-500/30 transition-all backdrop-blur"
+        onClick={() => onCompleteRef.current()}
+        className={`absolute top-5 right-5 z-[60] flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-slate-300 hover:text-white bg-slate-900/90 hover:bg-slate-800 border border-cyan-500/30 transition-opacity duration-500 backdrop-blur ${
+          fading ? 'opacity-0 pointer-events-none' : 'opacity-100 pointer-events-auto'
+        }`}
         title="Pular animação"
       >
         <span>Pular</span>
