@@ -3,7 +3,7 @@ export const profile = {
   name: 'Arione Rodrigues',
   role: 'Desenvolvedor Full Stack',
   email: 'arionedesigner@gmail.com',
-  phoneDisplay: '(84) 98629-2708',
+  phoneDisplay: 'Iniciar Conversa no WhatsApp',
   // Código do país + DDD + número, só dígitos
   whatsapp: '5584986292708',
   location: 'Natal, RN',
@@ -17,3 +17,4 @@ export const profile = {
 export const whatsappUrl = profile.whatsapp
   ? `https://wa.me/${profile.whatsapp}?text=${encodeURIComponent('Olá Arione! Vi seu portfólio e gostaria de conversar.')}`
   : 'https://wa.me/';
+

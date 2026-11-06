@@ -94,8 +94,8 @@ export const Contact: React.FC = () => {
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">WhatsApp Direto</span>
-                  <p className="text-sm font-semibold text-white">{profile.phoneDisplay}</p>
+                  <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">WhatsApp</span>
+                  <p className="text-sm font-semibold text-white">Iniciar Conversa no WhatsApp</p>
                 </div>
               </div>
               <span className="text-xs text-emerald-400 font-mono group-hover:translate-x-1 transition-transform">
