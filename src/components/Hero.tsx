@@ -1,18 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { 
   Terminal as TerminalIcon, 
-  ChevronRight, 
-  Mail, 
-  FileText, 
-  Github, 
-  Linkedin, 
-  MessageCircle, 
   Copy, 
   Check,
   Code2,
   Sparkles
 } from 'lucide-react';
-import { profile, whatsappUrl } from '../data/profile';
+import { profile } from '../data/profile';
 
 export const Hero: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -122,81 +116,6 @@ export const developer = {
             <p className="text-slate-400 text-base sm:text-lg max-w-2xl font-normal leading-relaxed pt-1">
               Olá! Eu sou <strong className="text-white">Arione Rodrigues</strong>, Desenvolvedor Full Stack especializado em construir APIs robustas (<span className="text-slate-200">Python, Java, Node.js</span>), aplicações <span className="text-slate-200">Web, PWA e Mobile (React, Angular, Flutter)</span> e automações com <span className="text-cyan-400">Inteligência Artificial</span>.
             </p>
-          </div>
-
-          {/* CTAs */}
-          <div className="flex flex-wrap items-center gap-3.5 pt-2">
-            <a
-              href="#projects"
-              className="px-6 py-3 rounded-xl font-semibold text-sm bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 text-white shadow-xl shadow-cyan-500/20 hover:shadow-cyan-500/35 hover:scale-[1.02] transition-all flex items-center gap-2"
-            >
-              <span>Explorar Projetos</span>
-              <ChevronRight className="w-4 h-4" />
-            </a>
-
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 rounded-xl font-semibold text-sm glass-panel hover:bg-slate-800/90 text-slate-200 hover:text-white transition-all flex items-center gap-2 border border-slate-700/60"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>WhatsApp Direto</span>
-            </a>
-
-            <a
-              href="#contact"
-              className="px-4 py-3 rounded-xl font-semibold text-sm glass-panel hover:bg-slate-800/90 text-slate-300 hover:text-white transition-all flex items-center gap-2 border border-slate-700/60"
-              title="Entrar em contato por e-mail"
-            >
-              <Mail className="w-4 h-4 text-cyan-400" />
-              <span className="hidden sm:inline">Contato</span>
-            </a>
-          </div>
-
-          {/* Social Proof & Quick Connect */}
-          <div className="pt-6 border-t border-slate-800/80 flex flex-wrap items-center gap-6 text-sm text-slate-400">
-            <span className="font-mono text-xs uppercase tracking-wider text-slate-500">Conectar:</span>
-            <div className="flex items-center gap-4">
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
-                title="GitHub"
-              >
-                <Github className="w-4 h-4" />
-                <span className="text-xs">GitHub</span>
-              </a>
-              <a
-                href={profile.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-400 transition-colors flex items-center gap-1.5"
-                title="LinkedIn"
-              >
-                <Linkedin className="w-4 h-4" />
-                <span className="text-xs">LinkedIn</span>
-              </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-emerald-400 transition-colors flex items-center gap-1.5"
-                title="WhatsApp"
-              >
-                <MessageCircle className="w-4 h-4" />
-                <span className="text-xs">{profile.phoneDisplay}</span>
-              </a>
-              <a
-                href={`mailto:${profile.email}`}
-                className="hover:text-cyan-400 transition-colors flex items-center gap-1.5"
-                title="E-mail"
-              >
-                <FileText className="w-4 h-4" />
-                <span className="text-xs hidden md:inline">{profile.email}</span>
-              </a>
-            </div>
           </div>
 
         </div>
