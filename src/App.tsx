@@ -8,6 +8,7 @@ import { AboutAndExperience } from './components/AboutAndExperience';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Reveal } from './components/Reveal';
+import { CodeRevealBackground } from './components/CodeRevealBackground';
 import { Zap, Code2, ShieldCheck, Rocket } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -52,6 +53,9 @@ export const App: React.FC = () => {
         <div className="absolute -bottom-40 left-1/3 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '12s' }} />
         <div className="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:28px_28px] opacity-20" />
       </div>
+
+      {/* 3b. Code "x-ray" lens: binary then source code revealed behind the site on mouse move */}
+      <CodeRevealBackground />
 
       {/* 4. Main Portfolio Content (Always rendered behind, revealed as laser scans down) */}
       <div className="relative z-10 opacity-100">
