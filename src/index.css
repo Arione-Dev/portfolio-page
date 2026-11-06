@@ -208,3 +208,17 @@ body {
 .skill-scan-line {
   animation: skillScanSweep 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
+
+@keyframes shimmerSweep {
+  0% {
+    left: -100%;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    left: 160%;
+    opacity: 0;
+  }
+}
