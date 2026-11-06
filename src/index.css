@@ -110,3 +110,75 @@ body {
     transition: none;
   }
 }
+
+
+/* Tab switch animations for Skills cards & badges */
+@keyframes skillCardBoot {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.95);
+    filter: blur(8px);
+    box-shadow: 0 0 28px rgba(6, 182, 212, 0.35);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0px);
+    box-shadow: 0 0 18px rgba(6, 182, 212, 0.18);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes skillChipPop {
+  0% {
+    opacity: 0;
+    transform: translateY(8px) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes skillHeaderFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-14px);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes skillScanSweep {
+  0% {
+    top: -10%;
+    opacity: 0.9;
+  }
+  100% {
+    top: 110%;
+    opacity: 0;
+  }
+}
+
+.skill-card-animate {
+  animation: skillCardBoot 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.skill-chip-animate {
+  animation: skillChipPop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.skill-header-animate {
+  animation: skillHeaderFade 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.skill-scan-line {
+  animation: skillScanSweep 0.75s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
