@@ -222,3 +222,18 @@ body {
     opacity: 0;
   }
 }
+
+/* Hide default system cursor on desktop devices with fine pointer so CyberCursor shines */
+@media (pointer: fine) {
+  body,
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"],
+  .cursor-pointer,
+  .cursor-default {
+    cursor: none !important;
+  }
+}
