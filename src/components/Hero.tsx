@@ -55,7 +55,7 @@ export const Hero: React.FC = () => {
         output = 'Destaques: Ecossistema Interfort (-62,5% custos com IA/Flutter/FastAPI) e Plataforma Logística Diniz (ruptura 30% -> 5%).';
         break;
       case 'contact':
-        output = `E-mail: ${profile.email} | WhatsApp: ${profile.phoneDisplay} | GitHub: github.com/Arione-Dev`;
+        output = `E-mail: ${profile.email} | WhatsApp: ${profile.phoneDisplay} | LinkedIn: ${profile.linkedinLabel} | GitHub: github.com/Arione-Dev`;
         break;
       case 'hire':
         output = 'Status: Disponível para atuar como Desenvolvedor Full Stack (PJ, CLT ou Projetos). Vamos conversar!';
