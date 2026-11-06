@@ -1,23 +1,19 @@
 import React, { useEffect, useRef } from 'react';
 
-// Realistic full-stack code "running behind the site"
+// Realistic full-stack & AI code "running behind the site"
 const CODE_LINES = [
-  'import React, { useEffect, useState } from "react";                     ',
-  'import { Pool } from "pg"; import Redis from "ioredis";                 ',
+  'from fastapi import FastAPI, Depends; from langchain import RAGPipeline;',
   'export const developer = { name: "Arione Rodrigues", role: "FullStack" };',
-  'const db = new Pool({ connectionString: process.env.DATABASE_URL });    ',
-  'app.get("/api/v1/projects", authMiddleware, async (req, res) => {       ',
-  '  const cached = await redis.get("portfolio:projects:featured");        ',
-  '  if (cached) return res.status(200).json(JSON.parse(cached));          ',
-  '  const { rows } = await db.query("SELECT * FROM projects WHERE live"); ',
-  '  return res.status(200).json({ ok: true, data: rows });                ',
-  '});                                                                     ',
-  'export function useHologramEngine(matrix: Float32Array) {               ',
-  '  return useMemo(() => compileShader(matrix, 0x7F454C46), [matrix]);    ',
-  '}                                                                       ',
-  'docker compose -f docker-compose.prod.yml up -d --build                 ',
-  'git checkout -b feature/xray-background && git push -u origin HEAD      ',
-  'SELECT id, title, stack FROM experiences ORDER BY period DESC LIMIT 10; ',
+  '@RestController @RequestMapping("/api/v1/interfort") class CoreService {',
+  'const agent = new AutonomousAgent({ llm: "ollama", vectorDb: "chroma" });',
+  'app.post("/api/v1/logistics/dispatch", celeryQueue.enqueue, authGuard); ',
+  'SELECT filial, ruptura_pct FROM estoque WHERE status = "otimizado";     ',
+  'docker stack deploy -c docker-compose.swarm.yml arione_production_stack ',
+  'Widget build(BuildContext ctx) => FlutterPwaApp(theme: CyberDarkTheme());',
+  'const cached = await redis.get("rag:embeddings:pinecone:index_v2");     ',
+  'kubectl apply -f k8s/microservices-deployment.yaml --namespace=prod     ',
+  'git checkout -b feature/atualiza-stacks-curriculo && git push origin    ',
+  'rabbitChannel.publish("events.exchange", "sac.autonomous", payload);    ',
 ];
 
 const BINARY_GLYPHS = ['0', '1', '0', '1', '0', '1', '0', '1', '0', '1', '7', 'F', 'A', 'C', 'E', 'x'];

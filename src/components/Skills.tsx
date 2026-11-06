@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Layout, Server, Database, Cloud, Sparkles } from 'lucide-react';
+import { Layout, Server, Database, Cloud, Sparkles, BrainCircuit } from 'lucide-react';
 import { SkillCategory } from '../types';
 
 export const Skills: React.FC = () => {
@@ -7,57 +7,61 @@ export const Skills: React.FC = () => {
 
   const categories: SkillCategory[] = [
     {
-      title: 'Frontend',
+      title: 'Back-end & Arquitetura',
+      icon: 'server',
+      description: 'Construção de APIs robustas, microsserviços, sistemas distribuídos e processamento assíncrono com mensageria.',
+      skills: [
+        { name: 'Python (FastAPI / Django / Flask)', level: 'Especialista', isPrimary: true },
+        { name: 'Java (Spring Boot)', level: 'Avançado', isPrimary: true },
+        { name: 'Node.js', level: 'Avançado', isPrimary: true },
+        { name: 'RabbitMQ (Message Broker)', level: 'Avançado', isPrimary: true },
+        { name: 'Celery (Filas Assíncronas)', level: 'Avançado', isPrimary: true },
+        { name: 'Redis (Cache & Broker)', level: 'Avançado', isPrimary: true },
+        { name: 'APIs RESTful & Microsserviços', level: 'Especialista' },
+        { name: 'POO, Design Patterns & Gunicorn', level: 'Avançado' },
+      ],
+    },
+    {
+      title: 'Front-end & Mobile',
       icon: 'layout',
-      description: 'Interfaces interativas, responsivas e focadas na melhor experiência do usuário (UX/UI).',
+      description: 'Aplicações Web modernas, PWAs e aplicativos móveis multiplataforma (Android & iOS) de alta performance.',
       skills: [
         { name: 'React', level: 'Avançado', isPrimary: true },
-        { name: 'Next.js', level: 'Avançado', isPrimary: true },
-        { name: 'TypeScript', level: 'Avançado', isPrimary: true },
-        { name: 'Tailwind CSS', level: 'Avançado', isPrimary: true },
-        { name: 'HTML5 / CSS3 Moderno', level: 'Especialista' },
-        { name: 'State Management (Zustand/Redux)', level: 'Intermediário/Avançado' },
-        { name: 'Figma to Code', level: 'Avançado' },
+        { name: 'Angular', level: 'Avançado', isPrimary: true },
+        { name: 'TypeScript & JavaScript', level: 'Avançado', isPrimary: true },
+        { name: 'Flutter (Android & iOS)', level: 'Avançado', isPrimary: true },
+        { name: 'PWAs (Progressive Web Apps)', level: 'Avançado', isPrimary: true },
+        { name: 'HTML5, CSS3 & Tailwind CSS', level: 'Especialista' },
+        { name: 'Android Mobile', level: 'Avançado' },
       ],
     },
     {
-      title: 'Backend',
-      icon: 'server',
-      description: 'APIs resilientes, microsserviços seguros e regras de negócio com Clean Architecture.',
+      title: 'IA Generativa & Dados',
+      icon: 'ai',
+      description: 'Orquestração de LLMs, agentes autônomos, arquiteturas RAG e modelagem em bancos relacionais, NoSQL e vetoriais.',
       skills: [
-        { name: 'Node.js', level: 'Avançado', isPrimary: true },
-        { name: 'Express.js', level: 'Avançado', isPrimary: true },
-        { name: 'Python / FastAPI', level: 'Intermediário' },
-        { name: 'APIs RESTful & GraphQL', level: 'Avançado', isPrimary: true },
-        { name: 'Autenticação (JWT / OAuth2 / Bcrypt)', level: 'Avançado' },
-        { name: 'Clean Architecture & SOLID', level: 'Avançado' },
-        { name: 'WebSockets & Realtime', level: 'Intermediário' },
+        { name: 'IA Generativa & Arquitetura RAG', level: 'Avançado', isPrimary: true },
+        { name: 'LangChain & Orquestração de LLMs', level: 'Avançado', isPrimary: true },
+        { name: 'PostgreSQL', level: 'Especialista', isPrimary: true },
+        { name: 'MySQL, Oracle & MongoDB', level: 'Avançado', isPrimary: true },
+        { name: 'Bancos Vetoriais (Pinecone / ChromaDB)', level: 'Avançado', isPrimary: true },
+        { name: 'Hugging Face & Ollama', level: 'Avançado' },
+        { name: 'PyTorch & TensorFlow', level: 'Intermediário/Avançado' },
+        { name: 'ONNX Optimization & Fine-tuning', level: 'Avançado' },
       ],
     },
     {
-      title: 'Banco de Dados',
-      icon: 'database',
-      description: 'Modelagem relacional e NoSQL, otimização de consultas e integridade dos dados.',
-      skills: [
-        { name: 'PostgreSQL', level: 'Avançado', isPrimary: true },
-        { name: 'MongoDB', level: 'Intermediário/Avançado' },
-        { name: 'Prisma ORM', level: 'Avançado', isPrimary: true },
-        { name: 'MySQL', level: 'Intermediário' },
-        { name: 'Redis (Cache)', level: 'Intermediário' },
-        { name: 'Modelagem ER & Migrations', level: 'Avançado' },
-      ],
-    },
-    {
-      title: 'DevOps & Ferramentas',
+      title: 'DevOps & Infraestrutura',
       icon: 'cloud',
-      description: 'Containerização, versionamento colaborativo e deploy em nuvem contínuo.',
+      description: 'Orquestração de contêineres, clusters em produção, automação de esteiras CI/CD e gestão de servidores Linux.',
       skills: [
-        { name: 'Docker', level: 'Intermediário/Avançado', isPrimary: true },
-        { name: 'Git & GitHub', level: 'Avançado', isPrimary: true },
-        { name: 'CI/CD Pipelines', level: 'Intermediário' },
-        { name: 'Vercel / Render / Railway', level: 'Avançado' },
-        { name: 'Linux & Terminal', level: 'Avançado' },
-        { name: 'Postman / Insomnia', level: 'Avançado' },
+        { name: 'Docker & Docker Compose', level: 'Especialista', isPrimary: true },
+        { name: 'Docker Swarm', level: 'Avançado', isPrimary: true },
+        { name: 'Kubernetes (K8s)', level: 'Intermediário/Avançado', isPrimary: true },
+        { name: 'CI/CD & GitHub Actions', level: 'Avançado', isPrimary: true },
+        { name: 'N8n (Automação de Fluxos)', level: 'Avançado', isPrimary: true },
+        { name: 'Linux & Gestão de Servidores', level: 'Avançado' },
+        { name: 'DBA & Modelagem de Dados', level: 'Avançado' },
       ],
     },
   ];
@@ -66,6 +70,7 @@ export const Skills: React.FC = () => {
     switch (type) {
       case 'layout': return <Layout className="w-5 h-5" />;
       case 'server': return <Server className="w-5 h-5" />;
+      case 'ai': return <BrainCircuit className="w-5 h-5" />;
       case 'database': return <Database className="w-5 h-5" />;
       default: return <Cloud className="w-5 h-5" />;
     }
@@ -76,13 +81,13 @@ export const Skills: React.FC = () => {
       <div className="text-center space-y-3 mb-14">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
           <Sparkles className="w-3.5 h-3.5" />
-          <span>Competências Técnicas</span>
+          <span>Arsenal Tecnológico</span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
           Habilidades & Tecnologias
         </h2>
-        <p className="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">
-          Stack moderna e validada no mercado para construir sistemas escaláveis de ponta a ponta.
+        <p className="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+          Domínio completo do ciclo de desenvolvimento: Back-end, Front-end, Mobile, Inteligência Artificial Generativa, Bancos de Dados e DevOps.
         </p>
       </div>
 
@@ -110,14 +115,14 @@ export const Skills: React.FC = () => {
           <div className="p-3 rounded-2xl bg-gradient-to-tr from-cyan-500/20 to-blue-500/10 text-cyan-400 border border-cyan-500/30">
             {getIcon(categories[activeTab].icon)}
           </div>
-          <div>
+          <div className="text-left">
             <h3 className="text-2xl font-bold text-white">{categories[activeTab].title}</h3>
             <p className="text-slate-400 text-sm mt-1">{categories[activeTab].description}</p>
           </div>
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5 text-left">
           {categories[activeTab].skills.map((skill) => (
             <div
               key={skill.name}
@@ -127,12 +132,12 @@ export const Skills: React.FC = () => {
                   : 'bg-slate-900/60 border-slate-800 hover:border-slate-700'
               }`}
             >
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between gap-2 mb-2">
                 <span className="font-semibold text-sm text-white group-hover:text-cyan-400 transition-colors">
                   {skill.name}
                 </span>
                 {skill.isPrimary && (
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 shadow-[0_0_8px_#06b6d4]" />
+                  <span className="w-1.5 h-1.5 shrink-0 rounded-full bg-cyan-400 shadow-[0_0_8px_#06b6d4]" />
                 )}
               </div>
               <span className="text-[11px] font-mono text-slate-400 bg-slate-800/70 px-2 py-0.5 rounded border border-slate-700/50">
