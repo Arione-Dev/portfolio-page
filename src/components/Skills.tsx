@@ -257,28 +257,29 @@ export const Skills: React.FC = () => {
       </div>
 
       {/* Category Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2.5 mb-10">
+      <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
         {categories.map((cat, idx) => {
           const isActive = activeTab === idx;
           return (
             <button
               key={cat.title}
               onClick={() => handleTabClick(idx)}
-              className={`relative overflow-hidden flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
+              className={`group relative overflow-hidden flex items-center gap-2.5 px-5 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 hover:-translate-y-1 hover:scale-[1.04] ${
                 isActive
-                  ? 'bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 text-white shadow-lg shadow-cyan-500/25 scale-105 ring-1 ring-cyan-300/50'
-                  : 'glass-panel text-slate-300 hover:text-white hover:bg-slate-800/80 border border-slate-800 hover:border-cyan-500/40'
+                  ? 'bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-400 text-white shadow-[0_10px_30px_-5px_rgba(6,182,212,0.5)] scale-105 ring-1 ring-cyan-300/60'
+                  : 'glass-panel text-slate-300 hover:text-cyan-200 hover:bg-slate-900/90 border border-slate-800 hover:border-cyan-400/60 hover:shadow-[0_10px_25px_-5px_rgba(6,182,212,0.3)]'
               }`}
             >
-              {getIcon(cat.icon)}
-              <span>{cat.title}</span>
-              <span
-                className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
-                  isActive ? 'bg-black/25 text-white' : 'bg-slate-800 text-slate-400'
-                }`}
-              >
-                {cat.skills.length}
+              {/* Diagonal shimmer sweep on hover */}
+              <span className="pointer-events-none absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:animate-[shimmerSweep_1s_ease-in-out] group-hover:opacity-100" />
+              <span className="relative z-10 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6">
+                {getIcon(cat.icon)}
               </span>
+              <span className="relative z-10">{cat.title}</span>
+              {/* Bottom laser accent on hover for inactive tabs */}
+              {!isActive && (
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-2/3 bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_10px_#22d3ee] transition-all duration-300" />
+              )}
             </button>
           );
         })}
@@ -300,12 +301,7 @@ export const Skills: React.FC = () => {
             {getIcon(currentCategory.icon)}
           </div>
           <div className="text-left">
-            <div className="flex items-center gap-2.5">
-              <h3 className="text-xl sm:text-2xl font-bold text-white">{currentCategory.title}</h3>
-              <span className="hidden sm:inline-block text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/20">
-                Módulo Ativo
-              </span>
-            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-white">{currentCategory.title}</h3>
             <p className="text-slate-400 text-xs sm:text-sm mt-1">{currentCategory.description}</p>
           </div>
         </div>
@@ -319,40 +315,45 @@ export const Skills: React.FC = () => {
                 key={skill.name}
                 onClick={() => setSelectedCard(isSelected ? null : skill.name)}
                 style={{ animationDelay: `${cardIdx * 85}ms` }}
-                className={`skill-card-animate cursor-pointer p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 ${
+                className={`skill-card-animate relative overflow-hidden cursor-pointer p-5 rounded-2xl border transition-all duration-500 flex flex-col justify-between group hover:-translate-y-1.5 hover:scale-[1.02] ${
                   isSelected
-                    ? 'bg-slate-900/95 border-cyan-400 ring-1 ring-cyan-400/50 shadow-xl shadow-cyan-500/20'
+                    ? 'bg-slate-900/95 border-cyan-400 ring-1 ring-cyan-400/50 shadow-[0_14px_35px_-10px_rgba(6,182,212,0.4)]'
                     : skill.isPrimary
-                    ? 'bg-slate-900/90 border-cyan-500/35 hover:border-cyan-400 hover:shadow-xl hover:shadow-cyan-500/15'
-                    : 'bg-slate-900/60 border-slate-800 hover:border-cyan-500/40'
+                    ? 'bg-slate-900/90 border-cyan-500/35 hover:border-cyan-400/80 hover:shadow-[0_14px_35px_-10px_rgba(6,182,212,0.32)]'
+                    : 'bg-slate-900/60 border-slate-800 hover:border-cyan-400/60 hover:shadow-[0_14px_35px_-10px_rgba(6,182,212,0.25)]'
                 }`}
               >
-                <div>
+                {/* Ambient radial glow on hover */}
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-500/12 via-transparent to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                {/* Diagonal shimmer sweep */}
+                <div className="pointer-events-none absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-cyan-300/15 to-transparent opacity-0 group-hover:animate-[shimmerSweep_1.1s_ease-in-out] group-hover:opacity-100" />
+
+                <div className="relative z-10">
                   <div className="flex items-start justify-between gap-2 mb-2">
-                    <span className="font-bold text-base text-white group-hover:text-cyan-400 transition-colors">
+                    <span className="font-bold text-base text-white group-hover:text-cyan-300 transition-colors duration-300">
                       {skill.name}
                     </span>
                     <div className="flex items-center gap-2 shrink-0">
-                      <span className="text-[10px] font-mono text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/25">
+                      <span className="text-[10px] font-mono text-cyan-300 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/25 group-hover:bg-cyan-500/20 group-hover:border-cyan-400/50 transition-colors duration-300">
                         {skill.level}
                       </span>
                       {skill.isPrimary && (
-                        <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#06b6d4] group-hover:scale-125 transition-transform" />
+                        <span className="w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_8px_#06b6d4] group-hover:scale-125 group-hover:shadow-[0_0_12px_#22d3ee] transition-all duration-300" />
                       )}
                     </div>
                   </div>
 
                   {/* Detailed ecosystem libraries & tools with staggered pop-in */}
                   {skill.details && skill.details.length > 0 && (
-                    <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-slate-800/80">
+                    <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-slate-800/80 group-hover:border-cyan-500/25 transition-colors duration-300">
                       {skill.details.map((item, chipIdx) => (
                         <span
                           key={item}
                           style={{ animationDelay: `${cardIdx * 85 + chipIdx * 30 + 120}ms` }}
-                          className={`skill-chip-animate text-[11px] font-mono px-2 py-0.5 rounded-md border transition-all duration-200 ${
+                          className={`skill-chip-animate text-[11px] font-mono px-2 py-0.5 rounded-md border transition-all duration-200 hover:-translate-y-0.5 ${
                             isSelected
                               ? 'bg-cyan-500/15 text-cyan-200 border-cyan-400/50'
-                              : 'bg-slate-800/90 text-slate-200 border-slate-700/70 group-hover:border-cyan-500/35 hover:!bg-cyan-500/20 hover:!text-cyan-200 hover:!border-cyan-400'
+                              : 'bg-slate-800/90 text-slate-200 border-slate-700/70 group-hover:border-cyan-500/40 hover:!bg-cyan-500/25 hover:!text-cyan-100 hover:!border-cyan-300 hover:shadow-[0_0_10px_rgba(6,182,212,0.3)]'
                           }`}
                         >
                           {item}
@@ -361,6 +362,13 @@ export const Skills: React.FC = () => {
                     </div>
                   )}
                 </div>
+
+                {/* Bottom neon laser bar on card hover */}
+                <div className="
+                  absolute bottom-0 left-1/2 -translate-x-1/2 h-[2px] w-0 group-hover:w-3/4
+                  bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_12px_#22d3ee]
+                  transition-all duration-500
+                " />
               </div>
             );
           })}
