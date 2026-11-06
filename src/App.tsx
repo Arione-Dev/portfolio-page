@@ -9,6 +9,7 @@ import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { Reveal } from './components/Reveal';
 import { CodeRevealBackground } from './components/CodeRevealBackground';
+import { CyberCursor } from './components/CyberCursor';
 import { Zap, Code2, ShieldCheck, Rocket } from 'lucide-react';
 
 export const App: React.FC = () => {
@@ -33,6 +34,9 @@ export const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#05070e] text-slate-100 relative selection:bg-cyan-500 selection:text-black">
       
+      {/* 0. Custom Cyber / Developer HUD Cursor (Desktop fine pointer) */}
+      <CyberCursor />
+
       {/* 1. Hologram Intro Sequence (Acts as dynamic revealing curtain) */}
       {showIntro && (
         <HologramIntro onComplete={() => setShowIntro(false)} />
