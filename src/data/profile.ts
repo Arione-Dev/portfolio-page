@@ -9,8 +9,8 @@ export const profile = {
   location: 'Natal, RN',
   education: 'Bacharelado em Ciência da Computação – UNP',
   github: 'https://github.com/Arione-Dev',
-  linkedin: 'https://linkedin.com/in/arione-rodrigues',
-  linkedinLabel: 'linkedin.com/in/arione-rodrigues',
+  linkedin: 'https://www.linkedin.com/in/arione-rodrigues-040997167',
+  linkedinLabel: 'linkedin.com/in/arione-rodrigues-040997167',
   resumeUrl: '/Curriculo-Arione-Rodrigues.pdf',
 };
 
