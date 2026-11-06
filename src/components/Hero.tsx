@@ -52,7 +52,7 @@ export const Hero: React.FC = () => {
         output = 'DevOps & Infra: Docker, Docker Compose, Docker Swarm, Kubernetes (K8s), RabbitMQ, Celery, CI/CD, GitHub Actions, N8n, Linux';
         break;
       case 'projects':
-        output = 'Destaques: Ecossistema Interfort (-62,5% custos com IA/Flutter/FastAPI) e Plataforma Logística Diniz (ruptura 30% -> 5%).';
+        output = 'Destaques: Finanças Pro (Java 21/Spring Boot 3 + React PWA + Gemini Vision AI), Encarte Fácil (FastAPI + React WYSIWYG), Ecossistema Interfort (-62,5% custos), Plataforma Logística Diniz e Portfolio Page.';
         break;
       case 'contact':
         output = `E-mail: ${profile.email} | WhatsApp: Clique no card de contato | LinkedIn: ${profile.linkedinLabel} | GitHub: github.com/Arione-Dev`;

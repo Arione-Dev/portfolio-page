@@ -41,35 +41,61 @@ export const Projects: React.FC = () => {
       ]
     },
     {
-      id: 'rag-llm-orchestrator',
-      title: 'Orquestrador de IA Generativa, RAG & Mensageria',
+      id: 'financas-pro',
+      title: 'Finanças Pro — Gestão Financeira Inteligente PWA & IA Vision',
       description:
-        'Arquitetura de backend para processamento de documentos, busca semântica em bancos vetoriais e execução assíncrona de tarefas pesadas com filas distribuídas.',
-      category: 'backend',
-      tags: ['Python', 'FastAPI', 'LangChain', 'ChromaDB', 'Pinecone', 'Celery', 'RabbitMQ', 'Redis'],
-      demoUrl: profile.github,
-      githubUrl: profile.github,
-      featured: false,
+        'Plataforma completa de gestão financeira pessoal e familiar construída sob Clean Architecture, combinando Backend corporativo em Java 21 + Spring Boot 3, Frontend PWA instalável e visão computacional com Google Gemini.',
+      category: 'fullstack',
+      tags: [
+        'Java 21',
+        'Spring Boot 3',
+        'Spring Security (JWT)',
+        'Hibernate / JPA',
+        'React 18 (PWA)',
+        'TypeScript',
+        'PostgreSQL 16',
+        'Gemini Vision AI',
+        'Docker'
+      ],
+      demoUrl: 'https://github.com/Arione-Dev/Financas-pro',
+      githubUrl: 'https://github.com/Arione-Dev/Financas-pro',
+      featured: true,
       highlights: [
-        'Pipeline RAG com Hugging Face, Ollama e otimização de modelos via ONNX',
-        'Processamento assíncrono resiliente com Celery, RabbitMQ e cache Redis',
-        'APIs RESTful documentadas e esteiras CI/CD com GitHub Actions'
+        'Leitor multimodal de comprovantes Pix e cupons fiscais via Google Gemini Vision AI com Rate Limiting (Bucket4j)',
+        'Motor inteligente de parcelamento de cartões e projeção automática de faturas futuras em PostgreSQL',
+        'Frontend PWA instalável (Mobile & Desktop) com Nginx Reverse Proxy, tema claro/escuro e Privacy Shield'
       ]
     },
     {
-      id: 'enterprise-microservices',
-      title: 'Arquitetura Distribuída & Portal Web/PWA Moderno',
+      id: 'encarte-facil',
+      title: 'Encarte Fácil — Estúdio WYSIWYG & API de Tabloides Comerciais',
       description:
-        'Solução full stack combinando microsserviços em Java (Spring Boot) e Node.js com interfaces reativas em React, Angular e TypeScript.',
+        'Sistema full stack para automação de marketing no varejo e atacarejo, com editor visual em tempo real (WYSIWYG), catálogo de produtos frequentes e API RESTful de alta performance.',
+      category: 'fullstack',
+      tags: ['Python', 'FastAPI', 'SQLAlchemy', 'PostgreSQL', 'SQLite', 'React', 'Vite', 'Tailwind CSS'],
+      demoUrl: 'https://github.com/Arione-Dev/encarte-facil',
+      githubUrl: 'https://github.com/Arione-Dev/encarte-facil',
+      featured: true,
+      highlights: [
+        'Canvas renderizador WYSIWYG em tempo real com 14 templates comerciais (Tabloide A4, Stories 9:16 e Feed 1:1)',
+        'Backend REST em FastAPI com CRUD de encartes, upload de mídias, seeds automáticos e catálogo de produtos',
+        'Arquitetura multi-banco de dados com alternância transparente entre SQLite local e PostgreSQL em produção'
+      ]
+    },
+    {
+      id: 'portfolio-page',
+      title: 'Portfólio Full Stack Interativo & Hologram Terminal',
+      description:
+        'Aplicação SPA de alta performance projetada com estética futurista de engenharia de software, animações em Canvas 2D a 60fps, terminal CLI interativo e fluxo completo GitFlow.',
       category: 'frontend',
-      tags: ['React', 'Angular', 'TypeScript', 'Java (Spring Boot)', 'Node.js', 'Kubernetes', 'N8n'],
-      demoUrl: profile.github,
-      githubUrl: profile.github,
+      tags: ['React 18', 'TypeScript 5', 'Vite 6', 'Tailwind CSS 3', 'HTML5 Canvas', 'GitFlow'],
+      demoUrl: 'https://github.com/Arione-Dev/portfolio-page',
+      githubUrl: 'https://github.com/Arione-Dev/portfolio-page',
       featured: false,
       highlights: [
-        'Interfaces Web e PWA responsivas com foco em UX e performance',
-        'Integração com automações de fluxo via N8n e mensageria RabbitMQ',
-        'Deploy escalável com Docker Compose e Kubernetes (K8s)'
+        'Intro holográfica em linguagem de máquina e efeito raio-X que decodifica binário em código-fonte sob o cursor',
+        'Simulador de terminal CLI interativo com execução de comandos em tempo real e vitrine animada de stacks',
+        'Formulário de contato integrado com disparo assíncrono direto para caixa de entrada e versionamento SemVer'
       ]
     }
   ];
