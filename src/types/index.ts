@@ -18,6 +18,7 @@ export interface SkillCategory {
     name: string;
     level: string;
     isPrimary?: boolean;
+    details?: string[];
   }[];
 }
 
@@ -28,4 +29,3 @@ export interface TimelineItem {
   description: string;
   tags: string[];
 }
-
