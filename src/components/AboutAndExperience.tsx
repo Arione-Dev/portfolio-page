@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Briefcase, GraduationCap, MapPin, Sparkles } from 'lucide-react';
+import { User, Briefcase, GraduationCap, MapPin } from 'lucide-react';
 import { TimelineItem } from '../types';
 
 export const AboutAndExperience: React.FC = () => {
@@ -94,10 +94,6 @@ export const AboutAndExperience: React.FC = () => {
                     <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/70">
                       <MapPin className="w-3 h-3 text-cyan-400" />
                       <span>Natal/RN</span>
-                    </span>
-                    <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/25">
-                      <Sparkles className="w-3 h-3 text-cyan-400" />
-                      <span>Python • Java • Node • React • Flutter</span>
                     </span>
                   </div>
                 </div>
