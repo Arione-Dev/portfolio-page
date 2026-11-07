@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Briefcase, GraduationCap } from 'lucide-react';
+import { User, Briefcase, GraduationCap, MapPin, Sparkles } from 'lucide-react';
 import { TimelineItem } from '../types';
 
 export const AboutAndExperience: React.FC = () => {
@@ -37,23 +37,79 @@ export const AboutAndExperience: React.FC = () => {
       <div className="glass-panel-glow rounded-3xl p-8 sm:p-12 border border-slate-700/60 relative overflow-hidden text-left">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-          {/* Left Column: About copy + Full Academic Formation Card */}
+          {/* Left Column: About copy + Profile Photo + Full Academic Formation Card */}
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
               <User className="w-3.5 h-3.5" />
               <span>Sobre Mim</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              Arquiteturas escaláveis, dados e automação com IA.
-            </h2>
+            {/* Profile Photo + Identity Header Card */}
+            <div className="relative overflow-hidden p-5 rounded-2xl bg-slate-900/85 border border-cyan-500/30 hover:border-cyan-400/70 transition-all duration-500 group hover:shadow-[0_14px_35px_-10px_rgba(6,182,212,0.35)]">
+              {/* Ambient glow */}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-500/12 via-transparent to-blue-600/10 opacity-75 group-hover:opacity-100 transition-opacity duration-500" />
+              {/* Shimmer sweep */}
+              <div className="pointer-events-none absolute -inset-full top-0 block h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-cyan-300/15 to-transparent opacity-0 group-hover:animate-[shimmerSweep_1.1s_ease-in-out] group-hover:opacity-100" />
 
-            <div className="space-y-4 text-slate-300 text-sm sm:text-base leading-relaxed">
+              <div className="relative z-10 flex flex-col sm:flex-row items-center sm:items-start gap-5">
+                {/* Holographic Photo Frame */}
+                <div className="relative shrink-0">
+                  {/* Outer glowing ring */}
+                  <div className="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-cyan-400 via-blue-500 to-teal-400 opacity-70 blur-sm group-hover:opacity-100 group-hover:blur-md transition-all duration-500" />
+                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl overflow-hidden border-2 border-cyan-400/80 bg-slate-950 shadow-xl">
+                    <img
+                      src="/arione-rodrigues.jpg"
+                      alt="Arione Rodrigues - Desenvolvedor Full Stack"
+                      className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* Subtle cyan hologram overlay at bottom */}
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-slate-950/70 to-transparent" />
+                  </div>
+                  {/* Online badge */}
+                  <span
+                    className="absolute -bottom-1.5 -right-1.5 flex items-center gap-1 px-2 py-0.5 rounded-full bg-slate-950 border border-emerald-400/60 text-[10px] font-mono text-emerald-300 shadow-[0_0_10px_rgba(16,185,129,0.4)]"
+                    title="Disponível para projetos e oportunidades"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>ONLINE</span>
+                  </span>
+                </div>
+
+                {/* Title & Headline next to photo */}
+                <div className="text-center sm:text-left space-y-2 flex-1">
+                  <div>
+                    <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-white group-hover:text-cyan-300 transition-colors">
+                      Arione Rodrigues
+                    </h2>
+                    <p className="text-xs sm:text-sm font-mono text-cyan-400 font-semibold">
+                      Desenvolvedor Full Stack • Arquitetura & IA
+                    </p>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Arquiteturas escaláveis, engenharia de dados e automação inteligente com IA Generativa.
+                  </p>
+
+                  <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 pt-1">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/70">
+                      <MapPin className="w-3 h-3 text-cyan-400" />
+                      <span>Natal/RN</span>
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] font-mono px-2.5 py-0.5 rounded-md bg-cyan-500/10 text-cyan-300 border border-cyan-500/25">
+                      <Sparkles className="w-3 h-3 text-cyan-400" />
+                      <span>Python • Java • Node • React • Flutter</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="space-y-3.5 text-slate-300 text-sm sm:text-base leading-relaxed">
               <p>
-                Sou <strong className="text-white">Arione Rodrigues</strong>, Desenvolvedor Full Stack com sólida experiência prática na construção de arquiteturas escaláveis, modelagem de bancos de dados e integração de sistemas corporativos de missão crítica.
+                Com sólida experiência prática na construção de <strong className="text-white">arquiteturas escaláveis</strong>, modelagem de bancos de dados e integração de sistemas corporativos de missão crítica, atuo de ponta a ponta no ciclo de engenharia de software.
               </p>
               <p>
-                Aliando forte capacidade analítica e pensamento crítico, atuo no desenvolvimento de <strong className="text-cyan-400">APIs robustas</strong> em Python (FastAPI, Django, Flask), Java (Spring Boot) e Node.js, além de interfaces modernas em <strong className="text-blue-400">React, Angular e aplicativos móveis com Flutter</strong>.
+                Desenvolvo <strong className="text-cyan-400">APIs robustas</strong> em Python (FastAPI, Django, Flask), Java (Spring Boot) e Node.js, além de interfaces modernas em <strong className="text-blue-400">React, Angular e aplicativos móveis com Flutter</strong>.
               </p>
               <p>
                 Tenho foco especial na automação de processos e implementação de <strong className="text-emerald-400">Inteligência Artificial Generativa (RAG, LangChain, Agentes Autônomos)</strong>, gerando eficiência comprovada e redução expressiva de custos operacionais.
