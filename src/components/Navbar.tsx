@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ArrowUpRight, RotateCw } from 'lucide-react';
+import { Menu, X, ArrowUpRight, RotateCw, Terminal } from 'lucide-react';
 
 interface NavbarProps {
   onReplayIntro: () => void;
@@ -21,15 +21,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onReplayIntro }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         {/* Brand Logo */}
-        <a href="#home" className="flex items-center gap-2.5 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-blue-600 via-cyan-400 to-purple-600 p-0.5 shadow-lg shadow-cyan-500/20 group-hover:scale-105 transition-transform">
-            <div className="w-full h-full bg-[#05070e] rounded-[10px] flex items-center justify-center font-mono font-bold text-xs text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">
-              AR
-            </div>
+        <a href="#home" className="flex items-center gap-2.5 group text-xs sm:text-sm">
+          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/25 flex items-center justify-center text-cyan-400 group-hover:scale-110 group-hover:bg-cyan-500/20 group-hover:border-cyan-400/60 group-hover:shadow-[0_0_15px_rgba(6,182,212,0.35)] transition-all duration-300">
+            <Terminal className="w-4 h-4" />
           </div>
-          <span className="font-bold text-base sm:text-lg tracking-tight group-hover:text-cyan-400 transition-colors">
-            Arione<span className="text-cyan-400">.dev</span>
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="font-bold text-white group-hover:text-cyan-300 transition-colors">
+              Arione Rodrigues
+            </span>
+            <span className="hidden lg:inline text-slate-600">•</span>
+            <span className="hidden lg:inline text-xs text-slate-400 font-medium group-hover:text-slate-200 transition-colors">
+              Full Stack Developer
+            </span>
+          </div>
         </a>
 
         {/* Desktop Links */}
